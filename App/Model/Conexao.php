@@ -2,11 +2,11 @@
 
 namespace App\Model;
 
-define('HOST', 'pdb33.awardspace.net');
-define('DBNAME', '2873977_deliveri');
+define('HOST', '172.30.129.21');
+define('DBNAME', 'codigofonte');
 define('CHARSET', 'utf8');
-define('USER', '2873977_deliveri');
-define('PASSWORD', '4xhhhhhh5');
+define('USER', 'userF77');
+define('PASSWORD', 'RVyxIjrSvAukAWcc');
 
 
 class Conexao {
