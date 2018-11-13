@@ -3,9 +3,9 @@
 namespace App\Model;
 
 define('HOST', 'pdb33.awardspace.net');
-define('DBNAME', '2873977_delivery');
+define('DBNAME', '2873977_deliveri');
 define('CHARSET', 'utf8');
-define('USER', '2873977_delivery');
+define('USER', '2873977_deliveri');
 define('PASSWORD', '4xhhhhhh5');
 
 
