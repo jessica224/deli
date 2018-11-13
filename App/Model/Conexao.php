@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-define('HOST', '10.129.18.250:3306');
+define('HOST', 'http://mysql-del.7e14.starter-us-west-2.openshiftapps.com/');
 define('DBNAME', 'codigofonte');
 define('CHARSET', 'utf8');
 define('USER', 'user8LB');
