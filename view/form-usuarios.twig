@@ -1,0 +1,63 @@
+{% extends "admin.twig" %}
+{% block content %}    
+    <div style="padding: 35px;" align="center" class="card">
+        <div class="row">
+            <div class="left card-title">
+                <b class="flow-text">Administradores e Funcionários do sistema</b>
+            </div>
+        </div>
+        <div class="row">        
+
+            <div class="col s8">
+                <form id="form-usuarios" autocomplete="off" method="POST" action="{{BASE_URL}}/usuarios/salvar">
+
+                    <input type="hidden" name="ID_CPF_EMPRESA" id="ID_CPF_EMPRESA" value="{{ID_CPF_EMPRESA}}">
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}">                 
+                    <input type="hidden" id="ID" name="ID" value="{% if usuario.ID > 0 %}{{ usuario.ID}}{% else %}{{ 0 }}{% endif %}">
+                    <input type="hidden" name="usu_endereco" id="usu_endereco" value="0">
+                    <input type="hidden" name="usu_numeroEnd" id="usu_numeroEnd" value="0">
+                    <input type="hidden" name="bai_codigo" id="bai_codigo" value="0">
+                    <input type="hidden" name="usu_key" id="usu_key" value="0">
+
+                    <div class="input-field col s12">
+                        <label class="flow-text" for="usu_nome">Nome</label>
+                        <input id="usu_nome" required name="usu_nome" value="{{ usuario.usu_nome }}" type="text" >                           
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label class="flow-text" for="usu_email">Email</label>
+                        <input id="usu_email" required name="usu_email" value="{{ usuario.usu_email }}" type="email" >                           
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label class="flow-text" for="usu_senha">Senha</label>
+                        <input id="usu_senha" required name="usu_senha" value="{{ usuario.usu_senha }}" type="password" >                           
+                    </div>    
+
+                    <div class="input-field col s12">
+                        <label class="flow-text" for="usu_contato">Contato</label>
+                        <input id="usu_contato" required name="usu_contato" value="{{ usuario.usu_contato }}" type="text" >                           
+                    </div>    
+
+                    {% if USU_NIVEL == "ADM" %} 
+                        <div class="input-field col s12">
+                            <select id="usu_nivel" name="usu_nivel">                                                   
+                                <option value="ADM">ADMINISTRADOR</option>
+                                <option value="USU">FUNCIONÁRIO</option>                          
+                            </select>
+                            <label>Nível</label>
+                        </div>
+                    {%endif%}
+                    {% if USU_NIVEL == "USU" %} 
+                        <input type="hidden" name="usu_nivel" id="usu_nivel" value="{{usuario.usu_nivel}}">
+                    {%endif%}
+                    <div class="input-field col s12">
+                        <button class="btn waves-effect waves-light right submit" type="submit">{% if usuario.ID>0%}{{ 'Editar' }}{% else %}{{ 'Salvar' }}{% endif %}
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+{% endblock content %}

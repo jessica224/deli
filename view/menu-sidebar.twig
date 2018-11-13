@@ -1,0 +1,49 @@
+<ul id="slide-out" class="side-nav fixed z-depth-2">
+   
+    <li class="center no-padding">
+        <div class="indigo darken-2 white-text" style="height: 180px;">
+            <div class="row">
+                <img style="margin-top: 5%;" width="100" height="100" src="{{BASE_URL}}/assets/images/user.png" class="circle responsive-img" />
+                <p style="margin-top: -13%;">
+                </p>
+                <div class="switch">
+                    <label>
+                        <form >
+                            Fechar
+                            <input id="operarEmpresa" {% if EMPRESA_OPERACAO == "SIM" %}checked{% endif %}  type="checkbox">
+                            <span class="lever"></span>
+                            Abrir
+                        </form>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+
+    </li>
+
+    <li id="dash_dashboard"><a  target="_blank" class="waves-effect" href="{{BASE_URL}}/pedidos-app/pedidos"><b>Pedidos</b></a></li>
+
+
+    {% if USU_NIVEL == "ADM" %} 
+        <ul class="collapsible" data-collapsible="accordion">
+            <li id="dash_users">
+                <div id="dash_users_header" class="collapsible-header waves-effect"><b>Cadastros Gerais</b></div>
+                <div id="dash_users_body" class="collapsible-body">
+                    <ul>                   
+                        <li id="dash_dashboard"><a class="waves-effect" href="{{BASE_URL}}/categorias/listar"><b>1-Categ. Produto</b></a></li>
+                        <li id="dash_dashboard"><a class="waves-effect" href="{{BASE_URL}}/produtos/listar"><b>2-Produto</b></a></li>
+                        <li id="dash_dashboard"><a class="waves-effect" href="{{BASE_URL}}/bairros/listar"><b>3-Bairro</b></a></li>                    
+                        <li id="dash_dashboard"><a class="waves-effect" href="{{BASE_URL}}/adicionais/listar"><b>4-Categ. Adicionais</b></a></li>
+                        <li id="dash_dashboard"><a class="waves-effect" href="{{BASE_URL}}/sub_adicionais/listar"><b>5-Adicional</b></a></li>
+                        <li id="dash_dashboard"><a class="waves-effect" href="{{BASE_URL}}/adicionais_x_produtos/listar"><b>6-Adc x Prod</b></a></li>
+                        
+
+                    </ul>
+                </div>
+            </li>
+        </ul>     
+    {% endif %}
+
+
+</ul>

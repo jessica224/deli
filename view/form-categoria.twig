@@ -1,0 +1,34 @@
+{% extends "admin.twig" %}
+{% block content %}    
+    <div style="padding: 35px;" align="center" class="card">
+        <div class="row">
+            <div class="left card-title">
+                <b>Cadastro de Categorias</b>
+            </div>
+        </div>
+        <div class="row">
+            <form id="form-categorias" autocomplete="off" method="POST" action="{{BASE_URL}}/categorias/{% if categoria.cat_codigo > 0 %}editar{% else %}salvar{% endif %}" enctype="multipart/form-data">
+                <input type="hidden" name="ID_CPF_EMPRESA" id="ID_CPF_EMPRESA" value="{{ID_CPF_EMPRESA}}">
+                <input type="hidden" id="BASE_URL" value="{{BASE_URL}}">
+                <input type="hidden" id="cat_codigo" name="cat_codigo" value="{% if categoria.cat_codigo > 0 %}{{ categoria.cat_codigo}}{% else %}{{ 0 }}{% endif %}">
+                <input type="hidden" id="imagedel" name="imagedel" value="{{categoria.cat_imagem}}">
+                <div class="row">                        
+                    <div class="input-field col s12">
+                        <label for="bai_descricao">Nome do categoria</label>
+                        <input id="cat_descricao" required name="cat_descricao" value="{{ categoria.cat_descricao }}" type="text" >                           
+                    </div>
+
+                    <div class="input-field col s12 pull-m1">
+                        <input type="file" name="cat_imagem">
+                    </div>
+
+                    <div class="input-field col s12">
+                        <button id="submitFormCategoria" class="btn waves-effect waves-light right submit" type="submit">{% if categoria.cat_codigo>0%}{{ 'Editar' }}{% else %}{{ 'Salvar' }}{% endif %}
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>    
+{% endblock content %}

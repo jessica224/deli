@@ -1,0 +1,49 @@
+{% extends "admin.twig" %}
+{% block content %} 
+    <br />
+    <div id="div-lista-produto">
+
+        <div id="table-datatables">
+            <div class="row">
+                <div class="col s10">
+                    <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Contato</th>       
+                                <th>Email</th>                                       
+                                <th>Endereco</th>                
+                                <th>Numero</th>                                       
+                                <th>Bairro</th>                                       
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Contato</th> 
+                                <th>Email</th>                
+                                <th>Endereco</th>                
+                                <th>Numero</th>                
+                                <th>Bairro</th> 
+                            </tr>
+                        </tfoot>
+                        <tbody>                        
+                            {% for usu in usuarios %}                    
+                                <tr>                                                   
+                                    <td>{{ usu.usu_nome }}</td>
+                                    <td>{{ usu.usu_contato }}</td>
+                                    <td>{{ usu.usu_email }}</td>
+                                    <td>{{ usu.usu_endereco }}</td>
+                                    <td>{{ usu.usu_numeroEnd }}</td>
+                                    <td>{{ usu.bairro }}</td>
+                                </tr>
+                            {% endfor %}                         
+                        </tbody>                    
+                    </table>
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}" />
+                </div>
+            </div>
+        </div>   
+    </div>
+{% endblock content %}

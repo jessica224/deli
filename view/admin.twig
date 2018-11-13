@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>{{TITLE}}</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css  console_runner-079c09    events_runner-73716630c   css_live_reload_init    -->
+
+        <link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'>
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/font/material-design-icons/Material-Design-Icons.woff'>
+
+        <link href="{{BASE_URL}}/assets/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="{{BASE_URL}}/assets/css/dataTables.bootstrap.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+        <style class="cp-pen-styles">header,
+            main,
+            footer {
+                padding-left: 240px;
+            }
+
+            body {
+                backgroud: white;
+            }
+
+            @media only screen and (max-width: 992px) {
+                header,
+                main,
+                footer {
+                    padding-left: 0;
+                }
+            }
+
+            #credits li,
+            #credits li a {
+                color: white;
+            }
+
+            #credits li a {
+                font-weight: bold;
+            }
+
+            .footer-copyright .container,
+            .footer-copyright .container a {
+                color: #BCC2E2;
+            }
+
+            .fab-tip {
+                position: fixed;
+                right: 85px;
+                padding: 0px 0.5rem;
+                text-align: right;
+                background-color: #323232;
+                border-radius: 2px;
+                color: #FFF;
+                width: auto;
+            }
+        </style>
+    <body>
+       
+
+        <!-- include your content nav menu sidebar -->
+        {% include 'menu-sidebar.twig' %}
+        <!-- final your content menu sidebar -->
+
+        <header>
+            <ul class="dropdown-content" id="user_dropdown">
+                <li><a class="indigo-text" href="{{BASE_URL}}/usuarios/atualizar"> Trocar minha senha</a></li>
+                <li><a class="indigo-text" href="{{BASE_URL}}/logoff">Sair</a></li>                
+            </ul>
+
+            {% if USU_NIVEL == "ADM" %} 
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="{{BASE_URL}}/pedidos-app/relprdmaisvendidos">Relatório Produtos mais vendidos</a></li>
+                    <li><a href="{{BASE_URL}}/pedidos-app/relvendascliente">Relatório de vendas por clientes</a></li>
+                    <li><a href="{{BASE_URL}}/pedidos-app/relvendasperiodo">Relatório de vendas por período</a></li>
+                </ul>
+            {% endif %} 
+            <nav class="indigo" role="navigation">
+                <div class="nav-wrapper">
+
+                    <a data-activates="slide-out" class="button-collapse show-on-" href="#!"><img style="margin-top: 17px; margin-left: 5px;" src="https://res.cloudinary.com/dacg0wegv/image/upload/t_media_lib_thumb/v1463989873/smaller-main-logo_3_bm40iv.gif" /></a>
+
+                    <ul class="right hide-on-med-and-down">
+
+                        <a class='right dropdown-button' href='' data-activates='user_dropdown'><i class=' material-icons'>account_circle</i></a>
+                        </li>
+                    </ul>
+
+                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                        {% if USU_NIVEL == "ADM" %} 
+                        <ul class="left hide-on-med-and-down">
+                            <li id="dash_dashboard"><a href="{{BASE_URL}}/clientes/listar"><b>Clientes</b></a></li>
+                            <li id="dash_dashboard"><a href="{{BASE_URL}}/usuarios/listar"><b>Funcionários</b></a></li>
+                            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Relatórios<i class="material-icons right">arrow_drop_down</i></a></li>
+                        </ul>
+
+                    {% endif %}
+                </div>
+
+            </nav>
+
+
+            <!--nav>
+                <div class="nav-wrapper indigo darken-2">
+                    <a style="margin-left: 20px;" class="breadcrumb" href="#!">    {% if USU_NIVEL == "ADM" %} Administrador {% endif %}
+            {% if USU_NIVEL == "USR" %} Gerente {% endif %}</a>
+
+
+        <div style="margin-right: 20px;" id="timestamp" class="right"></div>
+    </div>
+</nav-->
+        </header>
+        <main>
+            <div class="row">
+                <div class="col s12">
+
+                    <!-- insert your content here-->
+
+                    {% block content %} {% endblock %}
+
+
+                    <!-- final content -->
+                </div>                
+            </div>
+
+
+
+            <!--div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
+                <a class="btn-floating btn-large pink waves-effect waves-light">
+                    <i class="large material-icons">add</i>
+                </a>
+
+                <ul>
+                    < <li>
+                         <a class="btn-floating red"><i class="material-icons">note_add</i></a>
+                         <a href="" class="btn-floating fab-tip">Add a note</a>
+                     </li>
+ 
+                     <li>
+                         <a class="btn-floating yellow darken-1"><i class="material-icons">add_a_photo</i></a>
+                         <a href="" class="btn-floating fab-tip">Add a photo</a>
+                     </li>
+ 
+                     <li>
+                         <a class="btn-floating green"><i class="material-icons">alarm_add</i></a>
+                         <a href="" class="btn-floating fab-tip">Add an alarm</a>
+                     </li>
+                    
+                    <li>
+                        <a class="btn-floating blue"><i class="material-icons">vpn_key</i></a>
+                        <a href="" class="btn-floating fab-tip">Desligar / Ligar</a>
+                    </li>
+            -->
+        </ul>
+    </div> 
+</main>
+
+<footer class="indigo page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h5 class="white-text">Desenvolvimento de Sistemas WEB e Android</h5>                      
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <span>Desenvolvido por <a style='font-weight: bold;' href="https://pauloceamidev.wordpress.com/">PauloCeami</a></span>
+        </div>
+    </div>
+</footer>
+
+{% block my_javascripts %}
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{{BASE_URL}}/assets/js/jquery.mask.js"></script>
+    <script type="text/javascript" src="{{BASE_URL}}/assets/js/jquery.validate.min.js"></script>
+    <!-- App All -->
+    <script type="text/javascript" src="{{BASE_URL}}/assets/js/App.js"></script>
+    <!--datatables--> 
+    <script type="text/javascript" src="{{BASE_URL}}/assets/js/jquery.dataTables.min.js"></script>
+{% endblock %}
+
+</body>
+
+</html>

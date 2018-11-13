@@ -1,0 +1,33 @@
+{% extends "admin.twig" %}
+{% block content %}    
+    <div style="padding: 35px;" align="center" class="card">
+        <div class="row">
+            <div class="left card-title">
+                <b>Cadastro de Bairros</b>
+            </div>
+        </div>
+        <div class="row">
+            <form id="form-bairros" autocomplete="off" method="POST" action="{{BASE_URL}}/bairros/{% if bairro.bai_codigo > 0 %}editar{% else %}salvar{% endif %}" enctype="multipart/form-data">
+                <input type="hidden" name="ID_CPF_EMPRESA" id="ID_CPF_EMPRESA" value="{{ID_CPF_EMPRESA}}">
+                <input type="hidden" id="BASE_URL" value="{{BASE_URL}}">
+                <input type="hidden" id="bai_codigo" name="bai_codigo" value="{% if bairro.bai_codigo > 0 %}{{ bairro.bai_codigo}}{% else %}{{ 0 }}{% endif %}">
+
+                <div class="row">                        
+                    <div class="input-field col s6">
+                        <label for="bai_descricao">Nome do bairro</label>
+                        <input id="bai_nome" required name="bai_nome" value="{{ bairro.bai_nome }}" type="text" >                           
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="bai_preco">Taxa</label>
+                        <input id="bai_taxa" required name="bai_taxa" value="{{ bairro.bai_taxa }}" type="text" >                           
+                    </div>                  
+                    <div class="input-field col s12">
+                        <button id="submitFormBairro" class="btn waves-effect waves-light right submit" type="submit">{% if bairro.bai_codigo>0%}{{ 'Editar' }}{% else %}{{ 'Salvar' }}{% endif %}
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>    
+{% endblock content %}

@@ -1,0 +1,51 @@
+
+.linhaTDCabecalho{    
+    font-family: freemono;
+    font-size: 11px;
+    padding-bottom:0px;
+}
+
+.linhas_itens{
+    font-family: freemono;
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: bold;
+    border-top:1px dashed;
+}
+.linhas_subitens{
+    font-family: freemono;
+    font-size: 10px;
+    padding-bottom:0px; 
+}
+
+.titulos{
+    font-family: freemono;
+    font-size: 12px;
+    border-top:1px;     
+    font-weight:bold;
+    margin-top: 20px;
+
+}
+.cabecalho_venda_titulo{
+    font-family: freemono;
+    font-size: 18px;
+    border-top:1px;     
+    font-weight:bold;
+}
+
+.cabecalho_venda_linhas{
+    font-family: freemono;
+    font-size: 13px;   
+}
+
+
+.tabela{
+    font-size: 10px;
+    width: 100%;
+}
+.subtotal{
+    font-family: freemono;
+    font-size: 14px;   
+    font-weight:bold;
+}
+

@@ -1,0 +1,66 @@
+{% extends "admin.twig" %}
+{% block content %}    
+    <div style="padding: 35px;" align="center" class="card">
+        <div class="row">
+            <div class="left card-title">
+                <b class="flow-text">Cadastro SUB-ADICIONAIS Para Produtos</b>
+            </div>
+        </div>
+        <div class="row">
+
+            {% if sub_adicional.sub_codigo > 0 %}
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{BASE_URL}}/sub_adicionais/uploads/{{sub_adicional.sub_img}}">
+                        </div>
+                        <div class="card-content">
+                            <p>{{sub_adicional.sub_descricao}}.</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="col s8">
+                <form id="form-adicionais" autocomplete="off" method="POST" action="{{BASE_URL}}/sub_adicionais/{% if sub_adicional.sub_codigo > 0 %}editar{% else %}salvar{% endif %}" enctype="multipart/form-data">
+                    <input type="hidden" name="ID_CPF_EMPRESA" id="ID_CPF_EMPRESA" value="{{ID_CPF_EMPRESA}}">
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}">
+                    <input type="hidden" id="sub_codigo" name="sub_codigo" value="{% if sub_adicional.sub_codigo > 0 %}{{ sub_adicional.sub_codigo}}{% else %}{{ 0 }}{% endif %}">
+                    <input type="hidden" id="imagedel" name="imagedel" value="{{sub_adicional.sub_img}}">
+
+
+                    <div class="input-field col s12">
+                        <select id="cat_codigo" name="adc_codigo">
+                            <option value="0" selected>Adicional Padrão para todos os produtos</option>
+                            {% for adc in adicionais %}    
+                                <option {% if sub_adicional.adc_codigo ==  adc.adc_codigo  %}selected{% else %}{% endif %} value="{{adc.adc_codigo}}">{{ adc.adc_descricao }}</option>
+                            {% endfor %} 
+                        </select>
+                        <label>Produto</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label class="flow-text" for="adc_descricao">Descrição </label>
+                        <input id="sub_descricao" required name="sub_descricao" value="{{ sub_adicional.sub_descricao }}" type="text" >                           
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label for="adc_preco">Preço</label>
+                        <input id="sub_preco" required name="sub_preco" value="{{ sub_adicional.sub_preco }}" type="text" >                           
+                    </div>
+
+                    <div class="input-field col s12 pull-m1">
+                        <input type="file" name="sub_img">
+                    </div>
+
+
+                    <div class="input-field col s12">
+                        <button id="submitFormAdicional" class="btn waves-effect waves-light right submit" type="submit">{% if sub_adicional.sub_codigo > 0 %}{{ 'Editar' }}{% else %}{{ 'Salvar' }}{% endif %}
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+{% endblock content %}

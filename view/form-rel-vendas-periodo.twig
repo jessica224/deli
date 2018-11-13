@@ -1,0 +1,42 @@
+{% extends "admin.twig" %}
+{% block content %}    
+    <div style="padding: 35px;" align="center" class="card">
+        <div class="row">
+            <div class="left card-title">
+                <b>Relatório de vendas por período</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <form id="form-rel-vendas-per" autocomplete="off" method="POST" action="{{BASE_URL}}/pedidos-app/rel-vendas-periodo.php"  target="_blank"   >
+                    <input type="hidden" name="ID_CPF_EMPRESA" id="ID_CPF_EMPRESA" value="{{ID_CPF_EMPRESA}}">
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}">
+                    <input type="hidden" id="cat_codigo" name="cat_codigo" value="{% if categoria.cat_codigo > 0 %}{{ categoria.cat_codigo}}{% else %}{{ 0 }}{% endif %}">
+                    <input type="hidden" id="imagedel" name="imagedel" value="{{categoria.cat_imagem}}">
+                    <div class="row">                        
+                        <div class="input-field col s6">
+                            <label for="data1">Data inicial</label>
+                            <input required name="data1" class="datepicker" type="text" >                           
+                        </div>
+
+                        <div class="input-field col s6">
+                            <label for="data2">Data inicial</label>
+                            <input required name="data2" class="datepicker" type="text" >                           
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input type="checkbox" class="filled-in" id="filled-in-box" name="IMPRIME_ITENS"  checked />
+                            <label for="filled-in-box">Imprimir itens</label>
+                        </div>
+                        
+                        <div class="input-field col s12">
+                            <button id="submitFormRelVendasPeriodo" class="btn waves-effect waves-light right submit" type="submit">Imprimir
+                                <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+{% endblock content %}

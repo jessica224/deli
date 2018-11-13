@@ -1,0 +1,58 @@
+{% extends "admin.twig" %}
+{% block content %} 
+    <br />
+    <div id="div-lista-produto">
+        <div class="row">
+            <div class="col s12">
+                <a href="{{BASE_URL}}/adicionais_x_produtos/novo"><i class="material-icons">add_box
+                    </i> Novo</a>  
+            </div>
+            <br/>
+            <br/>
+
+            {% if descricao_produto != '' %}
+                <div class="col s6">
+                    <h5>Adicionais para {{descricao_produto}}</h5>
+                </div>
+            {% endif %}
+
+        </div>     
+
+        <div id="table-datatables">
+            <div class="row">
+                <div class="col s6">
+                    <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                        <thead>
+                            <tr>                                
+                                <th>Produto</th>                                   
+                                <th>Adicional</th>                                   
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>                               
+                                <th>Produto</th>                                   
+                                <th>Adicional</th>                                   
+                                <th>Ação</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>                        
+                            {% for adc in adcxprod %}                    
+                                <tr>                                                   
+                                    <td>{{ adc.prd_descricao }}</td>
+                                    <td>{{ adc.adc_descricao }}</td>
+                                     <td>                                     
+                                        <a href="javascript:if(confirm('Deseja excluir este adicional ?')) {location='{{BASE_URL}}/adicionais_x_produtos/excluir/{{adc.id}}';}">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>  
+                                    </td>
+                                </tr>
+                            {% endfor %}                         
+                        </tbody>                    
+                    </table>
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}" />
+                </div>
+            </div>
+        </div>   
+    </div>
+{% endblock content %}

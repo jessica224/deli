@@ -1,0 +1,32 @@
+{% extends "admin.twig" %}
+{% block content %}    
+    <div style="padding: 35px;" align="center" class="card">
+        <div class="row">
+            <div class="left card-title">
+                <b class="flow-text">Cadastro de Adicional Para Produtos</b>
+
+            </div>
+        </div>
+        <div class="row">            
+
+            <div class="col s8">
+                <form id="form-adicionais" autocomplete="off" method="POST" action="{{BASE_URL}}/adicionais/salvar">
+                    <input type="hidden" name="ID_CPF_EMPRESA" id="ID_CPF_EMPRESA" value="{{ID_CPF_EMPRESA}}">
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}">
+                    <input type="hidden" id="adc_codigo" name="adc_codigo" value="{% if adicional.adc_codigo > 0 %}{{ adicional.adc_codigo}}{% else %}{{ 0 }}{% endif %}">
+
+                    <div class="input-field col s12">
+                        <label class="flow-text" for="adc_descricao">Descrição do adicional </label>
+                        <input id="adc_descricao" required name="adc_descricao" value="{{ adicional.adc_descricao }}" type="text" >                           
+                    </div>  
+
+                    <div class="input-field col s12">
+                        <button id="submitFormAdicional" class="btn waves-effect waves-light right submit" type="submit">{% if adicional.adc_codigo>0%}{{ 'Editar' }}{% else %}{{ 'Salvar' }}{% endif %}
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+{% endblock content %}

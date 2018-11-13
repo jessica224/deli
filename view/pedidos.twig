@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta http-equiv="refresh" content="30; {{BASE_URL}}/pedidos-app/pedidos">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>{{TITLE}}</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--    -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'>
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/font/material-design-icons/Material-Design-Icons.woff'>
+
+    <body>
+        <div style="margin-left:30px;margin-right: 10px; margin-top:20px; ">              
+            <div class="row">
+
+                <!-- Dropdown Trigger -->
+                <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Pedidos</a>
+
+                <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content'>                    
+                    <li><a href="{{BASE_URL}}/pedidos-app/pedidos/PEDIDO ENVIADO">Pedidos Enviados</a></li>
+                    <li><a href="{{BASE_URL}}/pedidos-app/pedidos/PEDIDO ACEITO">Pedidos Aceitos</a></li>
+                    <li><a href="{{BASE_URL}}/pedidos-app/pedidos/ENTREGANDO">Pedidos entregando</a></li>
+                    <li><a href="{{BASE_URL}}/pedidos-app/pedidos/PEDIDO RECUSADO">Pedidos Recusados</a></li>
+                </ul>
+                <br />
+                <div class="col s12">                    
+                    <table class="highlight responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Pedido</th>
+                                <th>Número Pedido</th>
+                                <th>Valor</th>  
+                                <th>Pagamento</th>
+                                <th>Observação</th>
+                                <th>status</th>
+                                <th>Cliente</th>                             
+                                <th>Atualizar Status</th>                             
+                            </tr>
+                        </thead>                       
+                        <tbody>  
+                            {% for ped in pedidos %}                         
+                                <tr>  
+                                    <td>
+                                        <a target="_blank" href="{{BASE_URL}}/pedidos-app/pedido.php?ped_chave={{ ped.ped_chave }}" class="waves-effect waves-light btn"><i class="material-icons right">print</i>PDF</a>
+                                        <a target="_blank" href="{{BASE_URL}}/pedidos-app/bematechMP20mi.php?ped_chave={{ ped.ped_chave }}" class="waves-effect waves-light btn"><i class="material-icons right">print</i>Bematech-MP20mi</a>
+                                    </td>
+                                    <td>{{ ped.ped_chave }}</td> 
+                                    <td>{{ ped.ped_valor }}</td>                                     
+                                    <td>{{ ped.ped_tipoPgto }}</td>                                                                 
+                                    <td>{{ ped.ped_observ }}</td>                                    
+                                    <td>{{ ped.ped_status }}</td>    
+                                    <td>{{ ped.cli_nome }}</td>    
+                                    <td>
+                                        <a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am a tooltip" href="javascript:if(confirm('Deseja recusar este pedido ?')) {location='{{BASE_URL}}/pedidos-app/recusar_pedido/{{ ped.ped_chave }}';}">
+                                            <i class="material-icons">thumb_down</i>
+                                        </a>  
+                                        <a class="btn tooltipped" href="{{BASE_URL}}/pedidos-app/pedido_aceito/{{ ped.ped_chave }}">
+                                            <i class="material-icons">thumb_up</i>
+                                        </a>
+                                        <a class="btn tooltipped" href="{{BASE_URL}}/pedidos-app/pedido_entregando/{{ ped.ped_chave }}">
+                                            <i class="material-icons">motorcycle</i>
+                                        </a>
+
+                                    </td>
+                                </tr>                                       
+                            {% endfor %}                         
+                        </tbody>
+                    </table>                           
+                </div>
+            </div>                   
+        </div>   
+        <script>
+            $('.dropdown1').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrainWidth: false, // Does not change width of dropdown to that of the activator
+                hover: true, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: false, // Displays dropdown below the button
+                alignment: 'left', // Displays dropdown with edge aligned to the left of button
+                stopPropagation: false // Stops event propagation
+            }
+            );
+            $('.tooltipped').tooltip({delay: 50});
+        </script>
+    </body>
+</html>

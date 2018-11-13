@@ -1,0 +1,56 @@
+{% extends "admin.twig" %}
+{% block content %} 
+    <br />
+    <div id="div-lista-produto">
+        <div class="row">
+            <div class="col s12">
+                <a href="{{BASE_URL}}/produtos/novo"><i class="material-icons">add_box
+                    </i> Novo</a>  
+            </div>
+        </div>     
+        <div id="table-datatables">
+            <div class="row">
+                <div class="col s8">
+                    <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Descrição do Produto</th>
+                                
+                                <th>Preço</th>                    
+                                <th>ativo</th>                         
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Descrição do Produto</th>
+                                
+                                <th>Preço</th>                    
+                                <th>ativo</th>                         
+                                <th>Ação</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>                        
+                            {% for prd in produtos %}                    
+                                <tr>                                                   
+                                    <td>{{ prd.prd_descricao }}</td>
+                                    <td>{{ prd.prd_preco }}</td>
+                                    <td>{{ prd.prd_ativo }}</td>                                 
+                                    <td>
+                                        <a href="{{BASE_URL}}/produtos/editar/{{prd.prd_codigo}}">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                        <a href="javascript:if(confirm('Deseja excluir este produto ?')) {location='{{BASE_URL}}/produtos/excluir/{{prd.prd_codigo}}';}">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>  
+                                    </td>
+                                </tr>
+                            {% endfor %}                         
+                        </tbody>                    
+                    </table>
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}" />
+                </div>
+            </div>
+        </div>   
+    </div>
+{% endblock content %}

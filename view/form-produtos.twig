@@ -1,0 +1,88 @@
+{% extends "admin.twig" %}
+{% block content %}    
+    <div style="padding: 35px;" align="center" class="card">
+        <div class="row">
+            <div class="left card-title">
+                <b class="flow-text">Cadastro de Produtos</b>
+            </div>
+        </div>
+        <div class="row">
+
+            {% if produto.prd_codigo > 0 %}
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{BASE_URL}}/produtos/uploads/{{produto.prd_img}}">
+                        </div>
+                        <div class="card-content">
+                            <p>{{produto.prd_descricao}}.</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="col s8">
+                <form id="form-produtos" autocomplete="off" method="POST" action="{{BASE_URL}}/produtos/{% if produto.prd_codigo > 0 %}editar{% else %}salvar{% endif %}" enctype="multipart/form-data">
+               
+                    <input type="hidden" name="ID_CPF_EMPRESA" id="ID_CPF_EMPRESA" value="{{ID_CPF_EMPRESA}}">
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}">
+                    <input type="hidden" id="prd_codigo" name="prd_codigo" value="{% if produto.prd_codigo > 0 %}{{ produto.prd_codigo}}{% else %}{{ 0 }}{% endif %}">
+                    <input type="hidden" id="imagedel" name="imagedel" value="{{produto.prd_img}}">
+                    <input type="hidden"  id="prd_prom" name="prd_prom" value="N">
+
+                    <div class="input-field col s12">
+                        <select id="cat_codigo" name="cat_codigo">
+                            <option value="0" disabled selected>Escolha uma categoria</option>
+                            {% for cat in categorias %}    
+                                <option {% if produto.cat_codigo ==  cat.cat_codigo  %}selected{% else %}{% endif %} value="{{cat.cat_codigo}}">{{ cat.cat_descricao }}</option>
+                            {% endfor %} 
+                        </select>
+                        <label>Categoria</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label class="flow-text" for="prd_descricao">Descrição do Produto</label>
+                        <input id="prd_descricao" required name="prd_descricao" value="{{ produto.prd_descricao }}" type="text" >                           
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label for="prd_preco">Preço</label>
+                        <input id="prd_preco" required name="prd_preco" value="{{ produto.prd_preco }}" type="text" >                           
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea rows="3" id="prd_det_1" name="prd_det_1" class="materialize-textarea">{{ produto.prd_det_1 }}</textarea>
+                        <label for="prd_det_1">Detalhes Produto</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <textarea rows="3" id="prd_det_2" name="prd_det_2" class="materialize-textarea">{{ produto.prd_det_2 }}</textarea>
+                        <label for="prd_det_2">Composição</label>
+                    </div>
+
+                    <div class="input-field col s12 pull-m1">
+                        <input type="file" name="prd_img">
+                    </div>
+
+                    <div class="input-field col s4">
+                        <input  value="S"  {%  if produto.prd_ativo == "S" %} checked {% endif %}   name="prd_ativo" type="checkbox" id="test5" />
+                        <label for="test5">Ativo</label>
+                    </div>
+
+
+                    <div class="input-field col s12">
+                        <button id="submitFormProduto" class="btn waves-effect waves-light right submit" type="submit">{% if produto.prd_codigo>0%}{{ 'Editar' }}{% else %}{{ 'Salvar' }}{% endif %}
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>    
+{% endblock content %}

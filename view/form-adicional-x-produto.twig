@@ -1,0 +1,49 @@
+
+{% extends "admin.twig" %}
+{% block content %}    
+    <div style="padding: 35px;" align="center" class="card">
+        <div class="row">
+            <div class="left card-title">
+                <b class="flow-text">Cadastro Produtos x Adicionais</b>
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="col s12">
+                <form id="form-adicionais" autocomplete="off" method="POST" action="{{BASE_URL}}/adicionais_x_produtos/{% if adcxprod.id > 0 %}editar{% else %}salvar{% endif %}">
+                    <input type="hidden" name="ID_CPF_EMPRESA" id="ID_CPF_EMPRESA" value="{{ID_CPF_EMPRESA}}">
+                    <input type="hidden" id="BASE_URL" value="{{BASE_URL}}">
+                    <input type="hidden" id="id" name="id" value="{% if adcxprod.id > 0 %}{{ adcxprod.id}}{% else %}{{ 0 }}{% endif %}">
+
+
+                    <div class="input-field col s12">
+                        <select id="cat_codigo" name="prd_codigo">
+                            {% for prd in produtos %}    
+                                <option {% if prd.prd_codigo == adcxprod.prd_codigo %}selected{% else %}{% endif %} value="{{prd.prd_codigo}}">{{ prd.prd_descricao }}</option>
+                            {% endfor %} 
+                        </select>
+                        <label>Produto</label>
+                    </div>
+
+                    {% for adc in adicionais %} 
+                        <div class="input-field col s2">
+                            <input  value="{{adc.adc_codigo}}"  {% if adc.adc_codigo == adcxprod.adc_codigo %} checked {% endif %}   name="adc_codigo[]" type="checkbox" id="test5{{adc.adc_codigo}}" />
+                            <label for="test5{{adc.adc_codigo}}">{{ adc.adc_descricao }}</label>
+                        </div>
+                    {% endfor %} 
+
+
+                    <div class="input-field col s12">
+                        <button id="submitFormAdicionalxProduto" class="btn waves-effect waves-light right submit" type="submit">{% if adcxprod.id > 0 %}{{ 'Editar' }}{% else %}{{ 'Salvar' }}{% endif %}
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                            
+                            
+                            
+                </form>
+            </div>
+        </div>
+    </div>    
+{% endblock content %}
