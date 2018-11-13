@@ -2,11 +2,11 @@
 
 namespace App\Model;
 
-define('HOST', 'http://mysql-del.7e14.starter-us-west-2.openshiftapps.com/');
-define('DBNAME', 'MYSQL_DATABASE');
+define('HOST', 'pdb33.awardspace.net');
+define('DBNAME', '2873977_delivery');
 define('CHARSET', 'utf8');
-define('USER', 'MYSQL_USER');
-define('PASSWORD', 'MYSQL_PASSWORD');
+define('USER', '2873977_delivery');
+define('PASSWORD', '4xhhhhhh5');
 
 
 class Conexao {
