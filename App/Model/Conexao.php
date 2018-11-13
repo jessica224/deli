@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-define('HOST', 'mysql://mysql:3306/');
+define('HOST', 'localhost');
 define('DBNAME', 'sampledb');
 define('CHARSET', 'utf8');
 define('USER', 'userUBG');
