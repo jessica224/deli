@@ -2,11 +2,11 @@
 
 namespace App\Model;
 
-define('HOST', 'pdb33.awardspace.net');
-define('DBNAME', '2873977_deliv');
+define('HOST', 'mysql://mysql:3306/');
+define('DBNAME', 'sampledb');
 define('CHARSET', 'utf8');
-define('USER', '2873977_deliv');
-define('PASSWORD', '4xhh5x5x55');
+define('USER', 'userUBG');
+define('PASSWORD', 'BfyKqkap304yiT1g');
 
 
 class Conexao {
