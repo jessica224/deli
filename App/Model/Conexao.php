@@ -3,10 +3,10 @@
 namespace App\Model;
 
 define('HOST', 'http://mysql-del.7e14.starter-us-west-2.openshiftapps.com/');
-define('DBNAME', 'codigofonte');
+define('DBNAME', 'MYSQL_DATABASE');
 define('CHARSET', 'utf8');
-define('USER', 'user8LB');
-define('PASSWORD', '0gq0ArYTyTiNTpWX');
+define('USER', 'MYSQL_USER');
+define('PASSWORD', 'MYSQL_PASSWORD');
 
 
 class Conexao {
