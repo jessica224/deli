@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("172.31.52.179", "userXVS", "ygrvIstqnaHy7glq", "codigofonte");
+$link = mysqli_connect("10.131.57.104", "userXVS", "ygrvIstqnaHy7glq", "codigofonte");
  
 if (!$link) {
     echo "Error: Falha ao conectar-se com o banco de dados MySQL." . PHP_EOL;
