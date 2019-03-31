@@ -2,11 +2,11 @@
 
 namespace App\Model;
 
-define('HOST', '172.30.129.21');
+define('HOST', '172.31.52.41');
 define('DBNAME', 'codigofonte');
 define('CHARSET', 'utf8');
-define('USER', 'userF77');
-define('PASSWORD', 'RVyxIjrSvAukAWcc');
+define('USER', 'userXVS');
+define('PASSWORD', 'ygrvIstqnaHy7glq');
 
 
 class Conexao {
