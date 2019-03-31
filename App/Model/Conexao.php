@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-define('HOST', '172.31.60.175');
+define('HOST', '172.31.50.240');
 define('DBNAME', 'codigofonte');
 define('CHARSET', 'utf8');
 define('USER', 'userXVA');
